@@ -1,0 +1,26 @@
+
+State Machine - |topo|fsm:machine|PE
+Name PE.S9 PE.S8 PE.S7 PE.S6 PE.S5 PE.S4 PE.S3 PE.S2 PE.S1 PE.S0 
+PE.S0 0 0 0 0 0 0 0 0 0 0 
+PE.S1 0 0 0 0 0 0 0 0 1 1 
+PE.S2 0 0 0 0 0 0 0 1 0 1 
+PE.S3 0 0 0 0 0 0 1 0 0 1 
+PE.S4 0 0 0 0 0 1 0 0 0 1 
+PE.S5 0 0 0 0 1 0 0 0 0 1 
+PE.S6 0 0 0 1 0 0 0 0 0 1 
+PE.S7 0 0 1 0 0 0 0 0 0 1 
+PE.S8 0 1 0 0 0 0 0 0 0 1 
+PE.S9 1 0 0 0 0 0 0 0 0 1 
+
+State Machine - |topo|fsm:machine|EA
+Name EA.S9 EA.S8 EA.S7 EA.S6 EA.S5 EA.S4 EA.S3 EA.S2 EA.S1 EA.S0 
+EA.S0 0 0 0 0 0 0 0 0 0 0 
+EA.S1 0 0 0 0 0 0 0 0 1 1 
+EA.S2 0 0 0 0 0 0 0 1 0 1 
+EA.S3 0 0 0 0 0 0 1 0 0 1 
+EA.S4 0 0 0 0 0 1 0 0 0 1 
+EA.S5 0 0 0 0 1 0 0 0 0 1 
+EA.S6 0 0 0 1 0 0 0 0 0 1 
+EA.S7 0 0 1 0 0 0 0 0 0 1 
+EA.S8 0 1 0 0 0 0 0 0 0 1 
+EA.S9 1 0 0 0 0 0 0 0 0 1 

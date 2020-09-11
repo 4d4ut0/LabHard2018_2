@@ -1,0 +1,27 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.STD_LOGIC_UNSIGNED.ALL;
+entity clock_enable_debouncing_button is
+port(
+ clk: in bit;
+                           -- Change counter threshold accordingly
+ button: in std_logic;
+ slow_clk_enable: out std_logic
+);
+end clock_enable_debouncing_button;
+architecture Behavioral of clock_enable_debouncing_button is
+signal counter: std_logic_vector(27 downto 0):=(others => '0');
+begin
+process(clk,button)
+begin
+ if(button='0') then 
+  counter <= (others => '0');
+ elsif(clk'event and clk = '1') then
+  counter <= counter + x"0000001"; 
+  if(counter>=x"003D08F") then -- reduce this number for simulation
+   counter <=  (others => '0');
+  end if;
+ end if;
+end process;
+ slow_clk_enable <= '1' when counter=x"003D08F" else '0'; -- reduce this number for simulationend Behavioral;
+end Behavioral;

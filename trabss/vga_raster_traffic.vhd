@@ -1,0 +1,350 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_arith.all;
+use ieee.std_logic_unsigned.all;
+entity vga_raster_traffic is
+  port (
+    reset : in std_logic;
+    clk   : in bit; --25Mhz
+    VGA_HS,     -- Active-Low Horizontal Sync
+    VGA_VS: OUT STD_LOGIC; --,     -- Active-Low Vertical Sync
+    VGA_R, VGA_G, VGA_B : out std_logic_vector(3 downto 0);
+	 linha_cursor_aux, coluna_cursor_aux: in std_logic_vector(1 downto 0)
+  );
+end vga_raster_traffic;
+
+architecture rtl of vga_raster_traffic is
+  type state is (SELECIONANDO_1,SELECIONANDO_2, JOGANDO_1, JOGANDO_2, VENCEDOR_1, VENCEDOR_2);
+  type bloco is (ABERTO, VAZIO, CHEIO);
+  -- Video parameters
+  constant HTOTAL       : integer :=  800;
+  constant HSYNC        : integer :=  96;
+  constant HBACK_PORCH  : integer :=  48;
+  constant HACTIVE      : integer :=  640;
+  constant HFRONT_PORCH : integer :=  16;
+  constant VTOTAL       : integer :=  525;
+  constant VSYNC        : integer :=  2;
+  constant VBACK_PORCH  : integer :=  33;
+  constant VACTIVE      : integer :=  480;
+  constant VFRONT_PORCH : integer :=  10;
+  
+  constant RECTANGLE_HSTART_0 : integer  := 80;
+  constant RECTANGLE_HEND_0   : integer  := RECTANGLE_HSTART_0+100;
+  constant RECTANGLE_VSTART_0 : integer  := 10;
+  constant RECTANGLE_VEND_0   : integer  := RECTANGLE_VSTART_0+100;
+  
+  constant RECTANGLE_HSTART_1 : integer  := RECTANGLE_HEND_0+20;
+  constant RECTANGLE_HEND_1   : integer  := RECTANGLE_HSTART_1+100;
+  constant RECTANGLE_VSTART_1 : integer  := RECTANGLE_VEND_0+20;
+  constant RECTANGLE_VEND_1   : integer  := RECTANGLE_VSTART_1+100;
+  
+  constant RECTANGLE_HSTART_2 : integer  := RECTANGLE_HEND_1+20;
+  constant RECTANGLE_HEND_2   : integer  := RECTANGLE_HSTART_2+100;
+  constant RECTANGLE_VSTART_2 : integer  := RECTANGLE_VEND_1+20;
+  constant RECTANGLE_VEND_2   : integer  := RECTANGLE_VSTART_2+100;
+  
+  constant RECTANGLE_HSTART_3 : integer  := RECTANGLE_HEND_2+20;
+  constant RECTANGLE_HEND_3   : integer  := RECTANGLE_HSTART_3+100;
+  constant RECTANGLE_VSTART_3 : integer  := RECTANGLE_VEND_2+20;
+  constant RECTANGLE_VEND_3 : integer  := RECTANGLE_VSTART_3+100;
+ 
+  -----------------------------------------------------------------------
+  signal linha, coluna: integer;
+  type tab  is array(0 to 3, 0 to 3) of bloco;
+  constant tab1, tab2: tab := 
+	(	(VAZIO,CHEIO,VAZIO,VAZIO),
+		(CHEIO, VAZIO, VAZIO, CHEIO),
+		(VAZIO, VAZIO, VAZIO, VAZIO),
+		(CHEIO, CHEIO,VAZIO,VAZIO));
+
+  
+  -- Horizontal position (0-800)
+  signal Hcount : std_logic_vector(9 downto 0);
+   -- Vertical position (0-524)
+  signal Vcount : std_logic_vector(9 downto 0);
+  signal EndOfLine, EndOfField : std_logic;
+  signal vga_hblank, vga_hsync,
+           vga_vblank, vga_vsync : std_logic;  -- Sync. signals
+  signal rectangle_v_0, rectangle_v_1 ,rectangle_v_2 ,rectangle_v_3 : std_logic;
+  signal rectangle_h_0, rectangle_h_1 ,rectangle_h_2 ,rectangle_h_3 : std_logic;
+  signal rectangle_00, rectangle_01 ,rectangle_02 ,rectangle_03 ,rectangle_10 ,rectangle_11 ,rectangle_12 ,rectangle_13 ,rectangle_20 ,rectangle_21,rectangle_22,rectangle_23 ,rectangle_30,rectangle_31, rectangle_32,rectangle_33: std_logic;
+  signal estado, novo_estado: state;
+  signal contador, contador_novo: integer;
+  signal corsim: bit;
+  signal linha_cursor, coluna_cursor: integer;
+begin
+
+HCounter : process (clk, reset)
+begin
+  if reset = '1' then
+    Hcount <= (others => '0');
+  elsif clk'event and clk = '1' then
+    if EndOfLine = '1' then
+      Hcount <= (others => '0');
+    else
+      Hcount <= Hcount + 1;
+    end if;
+  end if;
+end process HCounter;
+
+EndOfLine <= '1' when Hcount = HTOTAL - 1 else '0';
+
+States: process (clk, reset)
+begin
+   if reset='1' then
+	   estado<=SELECIONANDO_1;
+		contador<=0;
+		
+	elsif clk'event and clk='1' then
+	   contador<=contador_novo;
+		estado<=novo_estado;
+   end if;   	
+end process;
+
+PiscaPisca: process (contador)
+begin
+		if contador = 5000000 then
+			contador_novo<=0;
+			if corsim = '1' then
+				corsim <= '0';
+			else
+				corsim <= '1';
+			end if;
+		else contador_novo <= contador + 1;
+		end if;
+end process;
+
+VCounter: process (clk, reset)
+begin
+  if reset = '1' then
+    Vcount <= (others => '0');
+  elsif clk'event and clk = '1' then
+    if EndOfLine = '1' then
+      if EndOfField = '1' then
+         Vcount <= (others => '0');
+      else
+         Vcount <= Vcount + 1;
+      end if;
+    end if;
+  end if;
+end process VCounter;
+
+ EndOfField <= '1' when Vcount = VTOTAL - 1 else '0';
+ 
+HSyncGen : process (clk, reset)
+begin
+  if reset = '1' then
+    vga_hsync <= '1';
+  elsif clk'event and clk = '1' then
+    if EndOfLine = '1' then
+      vga_hsync <= '1';
+    elsif Hcount = HSYNC - 1 then
+      vga_hsync <= '0';
+    end if;
+  end if;
+end process HSyncGen;
+
+HBlankGen : process (clk, reset)
+begin
+  if reset = '1' then
+    vga_hblank <= '1';
+  elsif clk'event and clk = '1' then
+    if Hcount = HSYNC + HBACK_PORCH then
+      vga_hblank <= '0';
+    elsif Hcount = HSYNC + HBACK_PORCH + HACTIVE then
+      vga_hblank <= '1';
+    end if;
+  end if;
+end process HBlankGen;
+
+VSyncGen : process (clk, reset)
+begin
+  if reset = '1' then
+    vga_vsync <= '1';
+  elsif clk'event and clk = '1' then
+    if EndOfLine ='1' then
+      if EndOfField = '1' then
+        vga_vsync <= '1';
+      elsif Vcount = VSYNC - 1 then
+        vga_vsync <= '0';
+      end if;
+    end if;
+  end if;
+end process VSyncGen;
+
+VBlankGen : process (clk, reset)
+begin
+  if reset = '1' then
+    vga_vblank <= '1';
+  elsif clk'event and clk = '1' then
+    if EndOfLine = '1' then
+      if Vcount = VSYNC + VBACK_PORCH - 1 then
+        vga_vblank <= '0';
+      elsif Vcount = VSYNC + VBACK_PORCH + VACTIVE - 1 then
+        vga_vblank <= '1';
+      end if;
+    end if;
+  end if;
+end process VBlankGen;
+----------------------------------------------------------------
+RectangleHGen_0 : process (clk, reset)
+begin
+  if reset = '1' then
+    rectangle_h_0 <= '1';
+  elsif clk'event and clk = '1' then
+    if Hcount = HSYNC + HBACK_PORCH + RECTANGLE_HSTART_0 then
+      rectangle_h_0 <= '1';
+		coluna <= 0;
+    elsif Hcount = HSYNC + HBACK_PORCH + RECTANGLE_HEND_0 then
+      rectangle_h_0 <= '0';
+		coluna <= 4;
+		
+	 elsif Hcount = HSYNC + HBACK_PORCH + RECTANGLE_HSTART_1 then
+      rectangle_h_1 <= '1';
+		coluna <= 1;
+    elsif Hcount = HSYNC + HBACK_PORCH + RECTANGLE_HEND_1 then
+      rectangle_h_1 <= '0';
+		coluna <= 4;
+		
+	 elsif Hcount = HSYNC + HBACK_PORCH + RECTANGLE_HSTART_2 then
+      rectangle_h_2 <= '1';
+		coluna <= 2;
+    elsif Hcount = HSYNC + HBACK_PORCH + RECTANGLE_HEND_2 then
+      rectangle_h_2 <= '0';
+		coluna <= 4;
+	
+	 elsif Hcount = HSYNC + HBACK_PORCH + RECTANGLE_HSTART_3 then
+      rectangle_h_3 <= '1';
+		coluna <= 3;
+    elsif Hcount = HSYNC + HBACK_PORCH + RECTANGLE_HEND_3 then
+      rectangle_h_3 <= '0';
+		coluna <= 4;	
+    end if;
+  end if;
+end process RectangleHGen_0;
+-----------------------------------------------------------------------
+RectangleVGen_0 : process (clk, reset)
+begin
+  if reset = '1' then
+    rectangle_v_0 <= '1';
+  elsif clk'event and clk = '1' then
+    if Vcount = VSYNC + VBACK_PORCH - 1 + RECTANGLE_VSTART_0 then
+      rectangle_v_0 <= '1';
+		linha <= 0;
+    elsif Vcount = VSYNC + VBACK_PORCH - 1 + RECTANGLE_VEND_0 then
+      rectangle_v_0 <= '0';
+		linha <= 4;
+		
+	 elsif Vcount = VSYNC + VBACK_PORCH - 1 + RECTANGLE_VSTART_1 then
+      rectangle_v_1 <= '1';
+		linha <= 1;
+    elsif Vcount = VSYNC + VBACK_PORCH - 1 + RECTANGLE_VEND_1 then
+      rectangle_v_1 <= '0';
+		linha <= 4;
+		
+	 elsif Vcount = VSYNC + VBACK_PORCH - 1 + RECTANGLE_VSTART_2 then
+      rectangle_v_2 <= '1';
+		linha <= 2;
+    elsif Vcount = VSYNC + VBACK_PORCH - 1 + RECTANGLE_VEND_2 then
+      rectangle_v_2 <= '0';
+		linha <= 4;
+		
+	 elsif Vcount = VSYNC + VBACK_PORCH - 1 + RECTANGLE_VSTART_3 then
+      rectangle_v_3 <= '1';
+		linha <= 3;
+    elsif Vcount = VSYNC + VBACK_PORCH - 1 + RECTANGLE_VEND_3 then
+      rectangle_v_3 <= '0';
+		linha <= 4;
+    end if;
+  end if;
+end process RectangleVGen_0;
+-----------------------------------------------------
+
+rectangle_00 <= rectangle_h_0 and rectangle_v_0;
+rectangle_01 <= rectangle_h_0 and rectangle_v_1;
+rectangle_02 <= rectangle_h_0 and rectangle_v_2;
+rectangle_03 <= rectangle_h_0 and rectangle_v_3;
+
+rectangle_10 <= rectangle_h_1 and rectangle_v_0;
+rectangle_11 <= rectangle_h_1 and rectangle_v_1;
+rectangle_12 <= rectangle_h_1 and rectangle_v_2;
+rectangle_13 <= rectangle_h_1 and rectangle_v_3;
+
+rectangle_20 <= rectangle_h_2 and rectangle_v_0;
+rectangle_21 <= rectangle_h_2 and rectangle_v_1;
+rectangle_22 <= rectangle_h_2 and rectangle_v_2;
+rectangle_23 <= rectangle_h_2 and rectangle_v_3;
+
+rectangle_30 <= rectangle_h_3 and rectangle_v_0;
+rectangle_31 <= rectangle_h_3 and rectangle_v_1;
+rectangle_32 <= rectangle_h_3 and rectangle_v_2;
+rectangle_33 <= rectangle_h_3 and rectangle_v_3;
+
+linha_cursor <= 0 when linha_cursor_aux = "00" else
+						1 when linha_cursor_aux = "01" else
+						2 when linha_cursor_aux = "10" else
+						3 when linha_cursor_aux = "11";
+coluna_cursor <= 0 when coluna_cursor_aux = "00" else
+						1 when coluna_cursor_aux = "01" else
+						2 when coluna_cursor_aux = "10" else
+						3 when coluna_cursor_aux = "11";
+
+
+VideoOut: process (clk, estado, reset)
+begin
+  if reset = '1' then
+    VGA_R <= "0000";
+    VGA_G <= "0000";
+    VGA_B <= "0000";
+  elsif clk'event and clk = '1' then
+    if rectangle_00 = '1' or rectangle_01 = '1' or rectangle_02 = '1' or rectangle_03 = '1' or 
+			rectangle_10 = '1' or rectangle_11 = '1' or rectangle_12 = '1' or rectangle_13 = '1' or
+			rectangle_20 = '1' or rectangle_21 = '1' or rectangle_22 = '1' or rectangle_23 = '1' or
+			rectangle_30 = '1' or rectangle_31 = '1' or rectangle_32 = '1' or rectangle_33 = '1' then
+			if estado = SELECIONANDO_1 then
+				if linha_cursor = linha and coluna_cursor = coluna then
+				-----pisca pisc
+					--if corsim = '0' then
+						VGA_R <= "0000";
+						VGA_G <= "1111";
+						VGA_B <= "0000";
+					
+				else
+					if tab1(linha,coluna) = VAZIO then
+						VGA_R <= "1111";
+						VGA_G <= "1111";
+						VGA_B <= "1111";
+					else 
+						VGA_R <= "0000";
+						VGA_G <= "0000";
+						VGA_B <= "1111";
+					end if;
+				end if;
+			elsif estado = SELECIONANDO_2 then
+				-----pisca pisca
+					if corsim = '1' then
+						VGA_R <= "0000";
+						VGA_G <= "0000";
+						VGA_B <= "1111";
+					else
+						VGA_R <= "1111";
+						VGA_G <= "1111";
+						VGA_B <= "1111";
+					end if;
+			end if;
+    elsif vga_hblank = '0' and vga_vblank ='0' then
+      VGA_R <= "0000";
+      VGA_G <= "0000";
+      VGA_B <= "0000";
+    else
+      VGA_R <= "0000";
+      VGA_G <= "0000";
+      VGA_B <= "0000";
+    end if;
+  end if;
+end process VideoOut;
+
+VGA_HS <= not vga_hsync;
+VGA_VS <= not vga_vsync;
+
+end rtl;

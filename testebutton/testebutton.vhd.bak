@@ -1,0 +1,37 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_arith.all;
+use ieee.std_logic_unsigned.all;
+
+entity vga_teste is
+port (clk: in bit;
+		reset : in std_logic;
+		swt_sentido: in std_logic;
+		btn_confirma, btn_esq_up, btn_dir_down: in std_logic;
+);
+      --clk25: out bit);
+
+
+end entity;
+
+architecture algorithmic of vga_teste is
+signal clk25: bit;
+begin
+  p0: process (clk) is
+  variable contador: natural range 0 to 2:=0;
+  variable clk_aux: bit;
+  begin
+    if clk='1' then
+	   contador:=contador+1;
+		if (contador=1) then
+		  contador:=0;
+		  clk_aux:=not clk_aux;
+		  clk25<=clk_aux;
+		 end if; 
+	 end if;	
+		
+  end process;
+  
+  p1: process (clk)
+			
+end architecture;		

@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Fri Nov 15 17:52:40 2019
+Quartus II 32-bit Version : 12.1 Build 177 11/07/2012 SJ Web Edition
+Revision Name : DeBounce
+Top-level Entity Name : DeBounce
+Family : Cyclone III
+Total logic elements : 49
+    Total combinational functions : 49
+    Dedicated logic registers : 34
+Total registers : 34
+Total pins : 4
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0

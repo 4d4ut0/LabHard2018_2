@@ -1,0 +1,46 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+ 
+entity metaestabilidade is
+    port (
+        clk : in bit;
+        rst : in std_logic;
+        ce  : in std_logic;
+        input : in std_logic;
+        output : out std_logic
+    );
+end metaestabilidade;
+ 
+architecture Behavioral of metaestabilidade is
+ 
+component FFD is
+    port (
+        clk : in bit;
+        rst : in std_logic;
+        ce  : in std_logic;
+        d : in std_logic;
+        q : out std_logic
+    );
+end component;
+ 
+signal s_meta : std_logic;
+ 
+begin
+ 
+    metaestab_comp_0 : FFD port map (
+        clk => clk,
+        rst => rst,
+        ce => ce,
+        d => input,
+        q => s_meta
+    );
+ 
+    metaestab_comp_1 : FFD port map (
+        clk => clk,
+        rst => rst,
+        ce => ce,
+        d => s_meta,
+        q => output
+    );
+ 
+end Behavioral;

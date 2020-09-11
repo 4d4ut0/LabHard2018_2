@@ -1,0 +1,519 @@
+Analysis & Synthesis report for vga_teste
+Sat Nov 16 11:50:05 2019
+Quartus II 32-bit Version 12.1 Build 177 11/07/2012 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |vga_teste|vga_raster_traffic:e3|estado
+  9. User-Specified and Inferred Latches
+ 10. Registers Removed During Synthesis
+ 11. Removed Registers Triggering Further Register Optimizations
+ 12. General Register Statistics
+ 13. Inverted Register Statistics
+ 14. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 15. Elapsed Time Per Partition
+ 16. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2012 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                  ;
++------------------------------------+------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Sat Nov 16 11:50:05 2019    ;
+; Quartus II 32-bit Version          ; 12.1 Build 177 11/07/2012 SJ Web Edition ;
+; Revision Name                      ; vga_teste                                ;
+; Top-level Entity Name              ; vga_teste                                ;
+; Family                             ; Cyclone III                              ;
+; Total logic elements               ; 225                                      ;
+;     Total combinational functions  ; 223                                      ;
+;     Dedicated logic registers      ; 117                                      ;
+; Total registers                    ; 117                                      ;
+; Total pins                         ; 20                                       ;
+; Total virtual pins                 ; 0                                        ;
+; Total memory bits                  ; 0                                        ;
+; Embedded Multiplier 9-bit elements ; 0                                        ;
+; Total PLLs                         ; 0                                        ;
++------------------------------------+------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                     ; EP3C16F484C6       ;                    ;
+; Top-level entity name                                                      ; vga_teste          ; vga_teste          ;
+; Family name                                                                ; Cyclone III        ; Cyclone IV GX      ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                  ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; DSP Block Balancing                                                        ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto ROM Replacement                                                       ; On                 ; On                 ;
+; Auto RAM Replacement                                                       ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                 ; On                 ; On                 ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Strict RAM Replacement                                                     ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto RAM Block Balancing                                                   ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                    ; On                 ; On                 ;
+; Report Parameter Settings                                                  ; On                 ; On                 ;
+; Report Source Assignments                                                  ; On                 ; On                 ;
+; Report Connectivity Checks                                                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                               ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                         ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; SDC constraint protection                                                  ; Off                ; Off                ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                       ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
+; Synthesis Seed                                                             ; 1                  ; 1                  ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 8           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 1           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     1 processor            ; 100.0%      ;
+;     2-8 processors         ;   0.0%      ;
++----------------------------+-------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                ;
++----------------------------------+-----------------+-----------------+----------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                         ; Library ;
++----------------------------------+-----------------+-----------------+----------------------------------------------------------------------+---------+
+; vga_teste.vhd                    ; yes             ; User VHDL File  ; C:/Users/K4tr1n4/Desktop/LH2k19-2/Trab/trabss/vga_teste.vhd          ;         ;
+; vga_raster_traffic.vhd           ; yes             ; User VHDL File  ; C:/Users/K4tr1n4/Desktop/LH2k19-2/Trab/trabss/vga_raster_traffic.vhd ;         ;
+; FFD.vhd                          ; yes             ; User VHDL File  ; C:/Users/K4tr1n4/Desktop/LH2k19-2/Trab/trabss/FFD.vhd                ;         ;
++----------------------------------+-----------------+-----------------+----------------------------------------------------------------------+---------+
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary         ;
++---------------------------------------------+-------+
+; Resource                                    ; Usage ;
++---------------------------------------------+-------+
+; Estimated Total logic elements              ; 225   ;
+;                                             ;       ;
+; Total combinational functions               ; 223   ;
+; Logic element usage by number of LUT inputs ;       ;
+;     -- 4 input functions                    ; 76    ;
+;     -- 3 input functions                    ; 30    ;
+;     -- <=2 input functions                  ; 117   ;
+;                                             ;       ;
+; Logic elements by mode                      ;       ;
+;     -- normal mode                          ; 145   ;
+;     -- arithmetic mode                      ; 78    ;
+;                                             ;       ;
+; Total registers                             ; 117   ;
+;     -- Dedicated logic registers            ; 117   ;
+;     -- I/O registers                        ; 0     ;
+;                                             ;       ;
+; I/O pins                                    ; 20    ;
+; Embedded Multiplier 9-bit elements          ; 0     ;
+; Maximum fan-out                             ; 95    ;
+; Total fan-out                               ; 1064  ;
+; Average fan-out                             ; 2.80  ;
++---------------------------------------------+-------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                      ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------+--------------+
+; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name              ; Library Name ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------+--------------+
+; |vga_teste                 ; 223 (33)          ; 117 (12)     ; 0           ; 0            ; 0       ; 0         ; 20   ; 0            ; |vga_teste                       ;              ;
+;    |FFD:e1|                ; 41 (41)           ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |vga_teste|FFD:e1                ;              ;
+;    |FFD:e2|                ; 41 (41)           ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |vga_teste|FFD:e2                ;              ;
+;    |vga_raster_traffic:e3| ; 108 (108)         ; 41 (41)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |vga_teste|vga_raster_traffic:e3 ;              ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |vga_teste|vga_raster_traffic:e3|estado                                                                                             ;
++-----------------------+-------------------+-------------------+------------------+------------------+-----------------------+-----------------------+
+; Name                  ; estado.VENCEDOR_2 ; estado.VENCEDOR_1 ; estado.JOGANDO_2 ; estado.JOGANDO_1 ; estado.SELECIONANDO_2 ; estado.SELECIONANDO_1 ;
++-----------------------+-------------------+-------------------+------------------+------------------+-----------------------+-----------------------+
+; estado.SELECIONANDO_1 ; 0                 ; 0                 ; 0                ; 0                ; 0                     ; 0                     ;
+; estado.SELECIONANDO_2 ; 0                 ; 0                 ; 0                ; 0                ; 1                     ; 1                     ;
+; estado.JOGANDO_1      ; 0                 ; 0                 ; 0                ; 1                ; 0                     ; 1                     ;
+; estado.JOGANDO_2      ; 0                 ; 0                 ; 1                ; 0                ; 0                     ; 1                     ;
+; estado.VENCEDOR_1     ; 0                 ; 1                 ; 0                ; 0                ; 0                     ; 1                     ;
+; estado.VENCEDOR_2     ; 1                 ; 0                 ; 0                ; 0                ; 0                     ; 1                     ;
++-----------------------+-------------------+-------------------+------------------+------------------+-----------------------+-----------------------+
+
+
++----------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                ;
++-----------------------------------------------------+---------------------+------------------------+
+; Latch Name                                          ; Latch Enable Signal ; Free of Timing Hazards ;
++-----------------------------------------------------+---------------------+------------------------+
+; linha[0]                                            ; coluna[1]           ; yes                    ;
+; linha[1]                                            ; coluna[1]           ; yes                    ;
+; coluna[0]                                           ; coluna[1]           ; yes                    ;
+; coluna[1]                                           ; coluna[1]           ; yes                    ;
+; \p5:dir_aux[0]                                      ; Equal17             ; yes                    ;
+; \p5:dir_aux[1]                                      ; Equal17             ; yes                    ;
+; \p5:esq_aux[0]                                      ; \p5:esq_aux[0]      ; yes                    ;
+; \p5:esq_aux[1]                                      ; \p5:esq_aux[0]      ; yes                    ;
+; \p5:down_aux[0]                                     ; \p5:down_aux[0]     ; yes                    ;
+; \p5:down_aux[1]                                     ; \p5:down_aux[0]     ; yes                    ;
+; Number of user-specified and inferred latches = 10  ;                     ;                        ;
++-----------------------------------------------------+---------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++--------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                         ;
++---------------------------------------------+----------------------------------------------+
+; Register name                               ; Reason for Removal                           ;
++---------------------------------------------+----------------------------------------------+
+; vga_raster_traffic:e3|VGA_B[1..3]           ; Merged with vga_raster_traffic:e3|VGA_B[0]   ;
+; vga_raster_traffic:e3|VGA_R[1..3]           ; Merged with vga_raster_traffic:e3|VGA_R[0]   ;
+; vga_raster_traffic:e3|VGA_G[1..3]           ; Merged with vga_raster_traffic:e3|VGA_G[0]   ;
+; vga_raster_traffic:e3|coluna[3..9,11..30]   ; Merged with vga_raster_traffic:e3|coluna[10] ;
+; vga_raster_traffic:e3|linha[3..9,11..30]    ; Merged with vga_raster_traffic:e3|linha[10]  ;
+; vga_raster_traffic:e3|coluna[10]            ; Stuck at GND due to stuck port data_in       ;
+; vga_raster_traffic:e3|linha[10]             ; Stuck at GND due to stuck port data_in       ;
+; vga_raster_traffic:e3|contador[0..31]       ; Lost fanout                                  ;
+; vga_raster_traffic:e3|estado.JOGANDO_1      ; Lost fanout                                  ;
+; vga_raster_traffic:e3|estado.JOGANDO_2      ; Lost fanout                                  ;
+; vga_raster_traffic:e3|estado.VENCEDOR_1     ; Lost fanout                                  ;
+; vga_raster_traffic:e3|estado.VENCEDOR_2     ; Lost fanout                                  ;
+; vga_raster_traffic:e3|estado.SELECIONANDO_1 ; Lost fanout                                  ;
+; vga_raster_traffic:e3|estado.SELECIONANDO_2 ; Lost fanout                                  ;
+; Total Number of Removed Registers = 103     ;                                              ;
++---------------------------------------------+----------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                            ;
++----------------------------------+---------------------------+-------------------------------------------------------------------------+
+; Register name                    ; Reason for Removal        ; Registers Removed due to This Register                                  ;
++----------------------------------+---------------------------+-------------------------------------------------------------------------+
+; vga_raster_traffic:e3|coluna[10] ; Stuck at GND              ; vga_raster_traffic:e3|contador[31], vga_raster_traffic:e3|contador[30], ;
+;                                  ; due to stuck port data_in ; vga_raster_traffic:e3|contador[29], vga_raster_traffic:e3|contador[28], ;
+;                                  ;                           ; vga_raster_traffic:e3|contador[27], vga_raster_traffic:e3|contador[26], ;
+;                                  ;                           ; vga_raster_traffic:e3|contador[25], vga_raster_traffic:e3|contador[24], ;
+;                                  ;                           ; vga_raster_traffic:e3|contador[23], vga_raster_traffic:e3|contador[22], ;
+;                                  ;                           ; vga_raster_traffic:e3|contador[21], vga_raster_traffic:e3|contador[20], ;
+;                                  ;                           ; vga_raster_traffic:e3|contador[19], vga_raster_traffic:e3|contador[18], ;
+;                                  ;                           ; vga_raster_traffic:e3|contador[17], vga_raster_traffic:e3|contador[16], ;
+;                                  ;                           ; vga_raster_traffic:e3|contador[15], vga_raster_traffic:e3|contador[14], ;
+;                                  ;                           ; vga_raster_traffic:e3|contador[13], vga_raster_traffic:e3|contador[12], ;
+;                                  ;                           ; vga_raster_traffic:e3|contador[11], vga_raster_traffic:e3|contador[10], ;
+;                                  ;                           ; vga_raster_traffic:e3|contador[9], vga_raster_traffic:e3|contador[8],   ;
+;                                  ;                           ; vga_raster_traffic:e3|contador[7], vga_raster_traffic:e3|contador[6],   ;
+;                                  ;                           ; vga_raster_traffic:e3|contador[5], vga_raster_traffic:e3|contador[4],   ;
+;                                  ;                           ; vga_raster_traffic:e3|contador[3], vga_raster_traffic:e3|contador[2],   ;
+;                                  ;                           ; vga_raster_traffic:e3|contador[1], vga_raster_traffic:e3|contador[0]    ;
++----------------------------------+---------------------------+-------------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 117   ;
+; Number of registers using Synchronous Clear  ; 62    ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 29    ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 91    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++--------------------------------------------------+
+; Inverted Register Statistics                     ;
++----------------------------------------+---------+
+; Inverted Register                      ; Fan out ;
++----------------------------------------+---------+
+; vga_raster_traffic:e3|vga_hsync        ; 2       ;
+; vga_raster_traffic:e3|vga_vsync        ; 2       ;
+; vga_raster_traffic:e3|rectangle_h_0    ; 2       ;
+; vga_raster_traffic:e3|rectangle_v_0    ; 2       ;
+; vga_raster_traffic:e3|linha[0]         ; 2       ;
+; vga_raster_traffic:e3|coluna[0]        ; 2       ;
+; vga_raster_traffic:e3|coluna[31]       ; 1       ;
+; vga_raster_traffic:e3|linha[31]        ; 1       ;
+; Total number of inverted registers = 8 ;         ;
++----------------------------------------+---------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                            ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                  ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------+
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |vga_teste|vga_raster_traffic:e3|VGA_R[0]   ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |vga_teste|esq[1]                           ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |vga_teste|up[1]                            ;
+; 9:1                ; 2 bits    ; 12 LEs        ; 10 LEs               ; 2 LEs                  ; Yes        ; |vga_teste|vga_raster_traffic:e3|coluna[2]  ;
+; 9:1                ; 2 bits    ; 12 LEs        ; 10 LEs               ; 2 LEs                  ; Yes        ; |vga_teste|vga_raster_traffic:e3|linha[2]   ;
+; 9:1                ; 2 bits    ; 12 LEs        ; 10 LEs               ; 2 LEs                  ; Yes        ; |vga_teste|vga_raster_traffic:e3|coluna[31] ;
+; 9:1                ; 2 bits    ; 12 LEs        ; 10 LEs               ; 2 LEs                  ; Yes        ; |vga_teste|vga_raster_traffic:e3|linha[31]  ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:01     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 32-bit Analysis & Synthesis
+    Info: Version 12.1 Build 177 11/07/2012 SJ Web Edition
+    Info: Processing started: Sat Nov 16 11:50:02 2019
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off vga_teste -c vga_teste
+Info (20030): Parallel compilation is enabled and will use 8 of the 8 processors detected
+Info (12021): Found 2 design units, including 1 entities, in source file vga_teste.vhd
+    Info (12022): Found design unit 1: vga_teste-algorithmic
+    Info (12023): Found entity 1: vga_teste
+Info (12021): Found 2 design units, including 1 entities, in source file vga_raster_traffic.vhd
+    Info (12022): Found design unit 1: vga_raster_traffic-rtl
+    Info (12023): Found entity 1: vga_raster_traffic
+Info (12021): Found 2 design units, including 1 entities, in source file debounce.vhd
+    Info (12022): Found design unit 1: DeBounce-behav
+    Info (12023): Found entity 1: DeBounce
+Info (12021): Found 2 design units, including 1 entities, in source file ffd.vhd
+    Info (12022): Found design unit 1: FFD-Behavioral
+    Info (12023): Found entity 1: FFD
+Info (12021): Found 2 design units, including 1 entities, in source file metaestabilidade.vhd
+    Info (12022): Found design unit 1: metaestabilidade-Behavioral
+    Info (12023): Found entity 1: metaestabilidade
+Info (12021): Found 2 design units, including 1 entities, in source file debouncing_button_vhdl.vhd
+    Info (12022): Found design unit 1: Debouncing_Button_VHDL-Behavioral
+    Info (12023): Found entity 1: Debouncing_Button_VHDL
+Info (12021): Found 2 design units, including 1 entities, in source file clock_enable_debouncing_button.vhd
+    Info (12022): Found design unit 1: clock_enable_debouncing_button-Behavioral
+    Info (12023): Found entity 1: clock_enable_debouncing_button
+Info (12021): Found 2 design units, including 1 entities, in source file dff_debouncing_button.vhd
+    Info (12022): Found design unit 1: DFF_Debouncing_Button-Behavioral
+    Info (12023): Found entity 1: DFF_Debouncing_Button
+Info (12127): Elaborating entity "vga_teste" for the top level hierarchy
+Warning (10492): VHDL Process Statement warning at vga_teste.vhd(61): signal "swt_sentido" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_teste.vhd(82): signal "swt_sentido" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_teste.vhd(103): signal "swt_sentido" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_teste.vhd(124): signal "swt_sentido" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10631): VHDL Process Statement warning at vga_teste.vhd(143): inferring latch(es) for signal or variable "linha", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at vga_teste.vhd(143): inferring latch(es) for signal or variable "dir_aux", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at vga_teste.vhd(143): inferring latch(es) for signal or variable "esq_aux", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at vga_teste.vhd(143): inferring latch(es) for signal or variable "coluna", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at vga_teste.vhd(143): inferring latch(es) for signal or variable "down_aux", which holds its previous value in one or more paths through the process
+Info (10041): Inferred latch for "coluna[0]" at vga_teste.vhd(143)
+Info (10041): Inferred latch for "coluna[1]" at vga_teste.vhd(143)
+Info (10041): Inferred latch for "linha[0]" at vga_teste.vhd(143)
+Info (10041): Inferred latch for "linha[1]" at vga_teste.vhd(143)
+Info (10041): Inferred latch for "p5:down_aux[0]" at vga_teste.vhd(146)
+Info (10041): Inferred latch for "p5:down_aux[1]" at vga_teste.vhd(146)
+Info (10041): Inferred latch for "p5:esq_aux[0]" at vga_teste.vhd(146)
+Info (10041): Inferred latch for "p5:esq_aux[1]" at vga_teste.vhd(146)
+Info (10041): Inferred latch for "p5:dir_aux[0]" at vga_teste.vhd(146)
+Info (10041): Inferred latch for "p5:dir_aux[1]" at vga_teste.vhd(146)
+Info (12128): Elaborating entity "FFD" for hierarchy "FFD:e0"
+Info (12128): Elaborating entity "vga_raster_traffic" for hierarchy "vga_raster_traffic:e3"
+Warning (10541): VHDL Signal Declaration warning at vga_raster_traffic.vhd(74): used implicit default value for signal "novo_estado" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10492): VHDL Process Statement warning at vga_raster_traffic.vhd(111): signal "corsim" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10631): VHDL Process Statement warning at vga_raster_traffic.vhd(107): inferring latch(es) for signal or variable "corsim", which holds its previous value in one or more paths through the process
+Info (10041): Inferred latch for "coluna_cursor[0]" at vga_raster_traffic.vhd(290)
+Info (10041): Inferred latch for "coluna_cursor[1]" at vga_raster_traffic.vhd(290)
+Info (10041): Inferred latch for "coluna_cursor[2]" at vga_raster_traffic.vhd(290)
+Info (10041): Inferred latch for "coluna_cursor[3]" at vga_raster_traffic.vhd(290)
+Info (10041): Inferred latch for "coluna_cursor[4]" at vga_raster_traffic.vhd(290)
+Info (10041): Inferred latch for "coluna_cursor[5]" at vga_raster_traffic.vhd(290)
+Info (10041): Inferred latch for "coluna_cursor[6]" at vga_raster_traffic.vhd(290)
+Info (10041): Inferred latch for "coluna_cursor[7]" at vga_raster_traffic.vhd(290)
+Info (10041): Inferred latch for "coluna_cursor[8]" at vga_raster_traffic.vhd(290)
+Info (10041): Inferred latch for "coluna_cursor[9]" at vga_raster_traffic.vhd(290)
+Info (10041): Inferred latch for "coluna_cursor[10]" at vga_raster_traffic.vhd(290)
+Info (10041): Inferred latch for "coluna_cursor[11]" at vga_raster_traffic.vhd(290)
+Info (10041): Inferred latch for "coluna_cursor[12]" at vga_raster_traffic.vhd(290)
+Info (10041): Inferred latch for "coluna_cursor[13]" at vga_raster_traffic.vhd(290)
+Info (10041): Inferred latch for "coluna_cursor[14]" at vga_raster_traffic.vhd(290)
+Info (10041): Inferred latch for "coluna_cursor[15]" at vga_raster_traffic.vhd(290)
+Info (10041): Inferred latch for "coluna_cursor[16]" at vga_raster_traffic.vhd(290)
+Info (10041): Inferred latch for "coluna_cursor[17]" at vga_raster_traffic.vhd(290)
+Info (10041): Inferred latch for "coluna_cursor[18]" at vga_raster_traffic.vhd(290)
+Info (10041): Inferred latch for "coluna_cursor[19]" at vga_raster_traffic.vhd(290)
+Info (10041): Inferred latch for "coluna_cursor[20]" at vga_raster_traffic.vhd(290)
+Info (10041): Inferred latch for "coluna_cursor[21]" at vga_raster_traffic.vhd(290)
+Info (10041): Inferred latch for "coluna_cursor[22]" at vga_raster_traffic.vhd(290)
+Info (10041): Inferred latch for "coluna_cursor[23]" at vga_raster_traffic.vhd(290)
+Info (10041): Inferred latch for "coluna_cursor[24]" at vga_raster_traffic.vhd(290)
+Info (10041): Inferred latch for "coluna_cursor[25]" at vga_raster_traffic.vhd(290)
+Info (10041): Inferred latch for "coluna_cursor[26]" at vga_raster_traffic.vhd(290)
+Info (10041): Inferred latch for "coluna_cursor[27]" at vga_raster_traffic.vhd(290)
+Info (10041): Inferred latch for "coluna_cursor[28]" at vga_raster_traffic.vhd(290)
+Info (10041): Inferred latch for "coluna_cursor[29]" at vga_raster_traffic.vhd(290)
+Info (10041): Inferred latch for "coluna_cursor[30]" at vga_raster_traffic.vhd(290)
+Info (10041): Inferred latch for "coluna_cursor[31]" at vga_raster_traffic.vhd(290)
+Info (10041): Inferred latch for "linha_cursor[0]" at vga_raster_traffic.vhd(286)
+Info (10041): Inferred latch for "linha_cursor[1]" at vga_raster_traffic.vhd(286)
+Info (10041): Inferred latch for "linha_cursor[2]" at vga_raster_traffic.vhd(286)
+Info (10041): Inferred latch for "linha_cursor[3]" at vga_raster_traffic.vhd(286)
+Info (10041): Inferred latch for "linha_cursor[4]" at vga_raster_traffic.vhd(286)
+Info (10041): Inferred latch for "linha_cursor[5]" at vga_raster_traffic.vhd(286)
+Info (10041): Inferred latch for "linha_cursor[6]" at vga_raster_traffic.vhd(286)
+Info (10041): Inferred latch for "linha_cursor[7]" at vga_raster_traffic.vhd(286)
+Info (10041): Inferred latch for "linha_cursor[8]" at vga_raster_traffic.vhd(286)
+Info (10041): Inferred latch for "linha_cursor[9]" at vga_raster_traffic.vhd(286)
+Info (10041): Inferred latch for "linha_cursor[10]" at vga_raster_traffic.vhd(286)
+Info (10041): Inferred latch for "linha_cursor[11]" at vga_raster_traffic.vhd(286)
+Info (10041): Inferred latch for "linha_cursor[12]" at vga_raster_traffic.vhd(286)
+Info (10041): Inferred latch for "linha_cursor[13]" at vga_raster_traffic.vhd(286)
+Info (10041): Inferred latch for "linha_cursor[14]" at vga_raster_traffic.vhd(286)
+Info (10041): Inferred latch for "linha_cursor[15]" at vga_raster_traffic.vhd(286)
+Info (10041): Inferred latch for "linha_cursor[16]" at vga_raster_traffic.vhd(286)
+Info (10041): Inferred latch for "linha_cursor[17]" at vga_raster_traffic.vhd(286)
+Info (10041): Inferred latch for "linha_cursor[18]" at vga_raster_traffic.vhd(286)
+Info (10041): Inferred latch for "linha_cursor[19]" at vga_raster_traffic.vhd(286)
+Info (10041): Inferred latch for "linha_cursor[20]" at vga_raster_traffic.vhd(286)
+Info (10041): Inferred latch for "linha_cursor[21]" at vga_raster_traffic.vhd(286)
+Info (10041): Inferred latch for "linha_cursor[22]" at vga_raster_traffic.vhd(286)
+Info (10041): Inferred latch for "linha_cursor[23]" at vga_raster_traffic.vhd(286)
+Info (10041): Inferred latch for "linha_cursor[24]" at vga_raster_traffic.vhd(286)
+Info (10041): Inferred latch for "linha_cursor[25]" at vga_raster_traffic.vhd(286)
+Info (10041): Inferred latch for "linha_cursor[26]" at vga_raster_traffic.vhd(286)
+Info (10041): Inferred latch for "linha_cursor[27]" at vga_raster_traffic.vhd(286)
+Info (10041): Inferred latch for "linha_cursor[28]" at vga_raster_traffic.vhd(286)
+Info (10041): Inferred latch for "linha_cursor[29]" at vga_raster_traffic.vhd(286)
+Info (10041): Inferred latch for "linha_cursor[30]" at vga_raster_traffic.vhd(286)
+Info (10041): Inferred latch for "linha_cursor[31]" at vga_raster_traffic.vhd(286)
+Info (10041): Inferred latch for "corsim" at vga_raster_traffic.vhd(107)
+Warning (13012): Latch linha[0] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal esq[0]
+Warning (13012): Latch linha[1] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal esq[1]
+Warning (13012): Latch \p5:dir_aux[0] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal dir[0]
+Warning (13012): Latch \p5:dir_aux[1] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal dir[1]
+Warning (13012): Latch \p5:esq_aux[0] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal esq[0]
+Warning (13012): Latch \p5:esq_aux[1] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal esq[1]
+Warning (13012): Latch \p5:down_aux[0] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal down[0]
+Warning (13012): Latch \p5:down_aux[1] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal down[1]
+Info (13000): Registers with preset signals will power-up high
+Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 38 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 1 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "btn_confirma"
+Info (21057): Implemented 248 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 6 input pins
+    Info (21059): Implemented 14 output pins
+    Info (21061): Implemented 228 logic cells
+Info: Quartus II 32-bit Analysis & Synthesis was successful. 0 errors, 30 warnings
+    Info: Peak virtual memory: 391 megabytes
+    Info: Processing ended: Sat Nov 16 11:50:05 2019
+    Info: Elapsed time: 00:00:03
+    Info: Total CPU time (on all processors): 00:00:03
+
+

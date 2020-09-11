@@ -1,0 +1,43 @@
+
+State Machine - |mainController|state_reg
+Name state_reg.WaitNextFrame state_reg.CollusionDetected state_reg.DetectCollusion state_reg.EndAddObject state_reg.BeginAddObject state_reg.AddMatrix state_reg.WaitNextFrameNew state_reg.RemoveFullLine state_reg.DectectRemoveFullLine state_reg.idle state_reg.GameOverFin state_reg.idleClear state_reg.StartGameDebut 
+state_reg.StartGameDebut 0 0 0 0 0 0 0 0 0 0 0 0 0 
+state_reg.idleClear 0 0 0 0 0 0 0 0 0 0 0 1 1 
+state_reg.GameOverFin 0 0 0 0 0 0 0 0 0 0 1 0 1 
+state_reg.idle 0 0 0 0 0 0 0 0 0 1 0 0 1 
+state_reg.DectectRemoveFullLine 0 0 0 0 0 0 0 0 1 0 0 0 1 
+state_reg.RemoveFullLine 0 0 0 0 0 0 0 1 0 0 0 0 1 
+state_reg.WaitNextFrameNew 0 0 0 0 0 0 1 0 0 0 0 0 1 
+state_reg.AddMatrix 0 0 0 0 0 1 0 0 0 0 0 0 1 
+state_reg.BeginAddObject 0 0 0 0 1 0 0 0 0 0 0 0 1 
+state_reg.EndAddObject 0 0 0 1 0 0 0 0 0 0 0 0 1 
+state_reg.DetectCollusion 0 0 1 0 0 0 0 0 0 0 0 0 1 
+state_reg.CollusionDetected 0 1 0 0 0 0 0 0 0 0 0 0 1 
+state_reg.WaitNextFrame 1 0 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |mainController|keyPS2controller:u_keyPS2controller|state_reg
+Name state_reg.b_stop state_reg.b_parity state_reg.b_7 state_reg.b_6 state_reg.b_5 state_reg.b_4 state_reg.b_3 state_reg.b_2 state_reg.b_1 state_reg.b_0 state_reg.b_start state_reg.idle 
+state_reg.idle 0 0 0 0 0 0 0 0 0 0 0 0 
+state_reg.b_start 0 0 0 0 0 0 0 0 0 0 1 1 
+state_reg.b_0 0 0 0 0 0 0 0 0 0 1 0 1 
+state_reg.b_1 0 0 0 0 0 0 0 0 1 0 0 1 
+state_reg.b_2 0 0 0 0 0 0 0 1 0 0 0 1 
+state_reg.b_3 0 0 0 0 0 0 1 0 0 0 0 1 
+state_reg.b_4 0 0 0 0 0 1 0 0 0 0 0 1 
+state_reg.b_5 0 0 0 0 1 0 0 0 0 0 0 1 
+state_reg.b_6 0 0 0 1 0 0 0 0 0 0 0 1 
+state_reg.b_7 0 0 1 0 0 0 0 0 0 0 0 1 
+state_reg.b_parity 0 1 0 0 0 0 0 0 0 0 0 1 
+state_reg.b_stop 1 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |mainController|binaryToDeccimal:u_binaryToDeccimal_level|state_q
+Name state_q.done state_q.op state_q.idle 
+state_q.idle 0 0 0 
+state_q.op 0 1 1 
+state_q.done 1 0 1 
+
+State Machine - |mainController|binaryToDeccimal:u_binaryToDeccimal_score|state_q
+Name state_q.done state_q.op state_q.idle 
+state_q.idle 0 0 0 
+state_q.op 0 1 1 
+state_q.done 1 0 1 

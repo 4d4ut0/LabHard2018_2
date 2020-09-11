@@ -1,0 +1,9 @@
+
+State Machine - |vga_teste|vga_raster_traffic:e3|estado
+Name estado.VENCEDOR_2 estado.VENCEDOR_1 estado.JOGANDO_2 estado.JOGANDO_1 estado.SELECIONANDO_2 estado.SELECIONANDO_1 
+estado.SELECIONANDO_1 0 0 0 0 0 0 
+estado.SELECIONANDO_2 0 0 0 0 1 1 
+estado.JOGANDO_1 0 0 0 1 0 1 
+estado.JOGANDO_2 0 0 1 0 0 1 
+estado.VENCEDOR_1 0 1 0 0 0 1 
+estado.VENCEDOR_2 1 0 0 0 0 1 
