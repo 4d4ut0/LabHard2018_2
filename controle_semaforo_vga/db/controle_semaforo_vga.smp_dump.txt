@@ -1,0 +1,8 @@
+
+State Machine - |controle_semaforo_vga|controle_semaforo:estContr|est_atual
+Name est_atual.YY est_atual.YR est_atual.GR est_atual.RY est_atual.RG 
+est_atual.RG 0 0 0 0 0 
+est_atual.RY 0 0 0 1 1 
+est_atual.GR 0 0 1 0 1 
+est_atual.YR 0 1 0 0 1 
+est_atual.YY 1 0 0 0 1 

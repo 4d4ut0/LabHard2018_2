@@ -1,0 +1,13 @@
+entity estacionamento is
+generic (n: natural:=15); 
+port
+(
+	reset: in bit;
+	a, b: in bit;
+	ncarros: out bit;
+	lotado: out bit
+);
+end estacionamento;
+
+architecture garage of estacionamento is
+type ESTADO is (I, E0, E1, E2, S1)

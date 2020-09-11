@@ -1,0 +1,10 @@
+
+State Machine - |estacionamento|est_atual
+Name est_atual.AnimacaoSaida est_atual.AnimacaoEntrada est_atual.CarroSaindo est_atual.CarroEntrando est_atual.VerificacaoSai est_atual.VerificacaoEnt est_atual.Inicial 
+est_atual.Inicial 0 0 0 0 0 0 0 
+est_atual.VerificacaoEnt 0 0 0 0 0 1 1 
+est_atual.VerificacaoSai 0 0 0 0 1 0 1 
+est_atual.CarroEntrando 0 0 0 1 0 0 1 
+est_atual.CarroSaindo 0 0 1 0 0 0 1 
+est_atual.AnimacaoEntrada 0 1 0 0 0 0 1 
+est_atual.AnimacaoSaida 1 0 0 0 0 0 1 

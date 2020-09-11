@@ -1,0 +1,701 @@
+Analysis & Synthesis report for estacionamento
+Sun Nov 25 00:02:51 2018
+Quartus II 64-Bit Version 12.1 Build 177 11/07/2012 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |estacionamento|est_atual
+  9. User-Specified and Inferred Latches
+ 10. Registers Removed During Synthesis
+ 11. General Register Statistics
+ 12. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 13. Parameter Settings for User Entity Instance: Top-level Entity: |estacionamento
+ 14. Parameter Settings for Inferred Entity Instance: vga_raster_DE0:estRaster|lpm_divide:Div0
+ 15. Elapsed Time Per Partition
+ 16. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2012 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                  ;
++------------------------------------+------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Sun Nov 25 00:02:51 2018    ;
+; Quartus II 64-Bit Version          ; 12.1 Build 177 11/07/2012 SJ Web Edition ;
+; Revision Name                      ; estacionamento                           ;
+; Top-level Entity Name              ; estacionamento                           ;
+; Family                             ; Cyclone III                              ;
+; Total logic elements               ; 1,420                                    ;
+;     Total combinational functions  ; 1,398                                    ;
+;     Dedicated logic registers      ; 126                                      ;
+; Total registers                    ; 126                                      ;
+; Total pins                         ; 18                                       ;
+; Total virtual pins                 ; 0                                        ;
+; Total memory bits                  ; 0                                        ;
+; Embedded Multiplier 9-bit elements ; 0                                        ;
+; Total PLLs                         ; 0                                        ;
++------------------------------------+------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                     ; EP3C16F484C6       ;                    ;
+; Top-level entity name                                                      ; estacionamento     ; estacionamento     ;
+; Family name                                                                ; Cyclone III        ; Cyclone IV GX      ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                  ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; DSP Block Balancing                                                        ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto ROM Replacement                                                       ; On                 ; On                 ;
+; Auto RAM Replacement                                                       ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                 ; On                 ; On                 ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Strict RAM Replacement                                                     ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto RAM Block Balancing                                                   ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                    ; On                 ; On                 ;
+; Report Parameter Settings                                                  ; On                 ; On                 ;
+; Report Source Assignments                                                  ; On                 ; On                 ;
+; Report Connectivity Checks                                                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                               ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                         ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; SDC constraint protection                                                  ; Off                ; Off                ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                       ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
+; Synthesis Seed                                                             ; 1                  ; 1                  ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 8           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 7           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     1 processor            ; 100.0%      ;
+;     2-7 processors         ; < 0.1%      ;
+;     8 processors           ;   0.0%      ;
++----------------------------+-------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                  ;
++----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                              ; Library ;
++----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------+---------+
+; divisor_clk.vhd                  ; yes             ; User VHDL File               ; C:/Users/K4tr1n4/Documents/trabalho/estacionamento/divisor_clk.vhd        ;         ;
+; vga_raster_DE0.vhd               ; yes             ; User VHDL File               ; C:/Users/K4tr1n4/Documents/trabalho/estacionamento/vga_raster_DE0.vhd     ;         ;
+; pkg_semaforo_VGA.vhd             ; yes             ; User VHDL File               ; C:/Users/K4tr1n4/Documents/trabalho/estacionamento/pkg_semaforo_VGA.vhd   ;         ;
+; estacionamento.vhd               ; yes             ; User VHDL File               ; C:/Users/K4tr1n4/Documents/trabalho/estacionamento/estacionamento.vhd     ;         ;
+; lpm_divide.tdf                   ; yes             ; Megafunction                 ; c:/altera/12.1/quartus/libraries/megafunctions/lpm_divide.tdf             ;         ;
+; abs_divider.inc                  ; yes             ; Megafunction                 ; c:/altera/12.1/quartus/libraries/megafunctions/abs_divider.inc            ;         ;
+; sign_div_unsign.inc              ; yes             ; Megafunction                 ; c:/altera/12.1/quartus/libraries/megafunctions/sign_div_unsign.inc        ;         ;
+; aglobal121.inc                   ; yes             ; Megafunction                 ; c:/altera/12.1/quartus/libraries/megafunctions/aglobal121.inc             ;         ;
+; db/lpm_divide_t0p.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/K4tr1n4/Documents/trabalho/estacionamento/db/lpm_divide_t0p.tdf  ;         ;
+; db/abs_divider_1dg.tdf           ; yes             ; Auto-Generated Megafunction  ; C:/Users/K4tr1n4/Documents/trabalho/estacionamento/db/abs_divider_1dg.tdf ;         ;
+; db/alt_u_div_n8f.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/Users/K4tr1n4/Documents/trabalho/estacionamento/db/alt_u_div_n8f.tdf   ;         ;
+; db/add_sub_unc.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/K4tr1n4/Documents/trabalho/estacionamento/db/add_sub_unc.tdf     ;         ;
+; db/add_sub_vnc.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/K4tr1n4/Documents/trabalho/estacionamento/db/add_sub_vnc.tdf     ;         ;
+; db/lpm_abs_6v9.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/K4tr1n4/Documents/trabalho/estacionamento/db/lpm_abs_6v9.tdf     ;         ;
+; db/lpm_abs_9v9.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/K4tr1n4/Documents/trabalho/estacionamento/db/lpm_abs_9v9.tdf     ;         ;
++----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------+---------+
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary         ;
++---------------------------------------------+-------+
+; Resource                                    ; Usage ;
++---------------------------------------------+-------+
+; Estimated Total logic elements              ; 1,420 ;
+;                                             ;       ;
+; Total combinational functions               ; 1398  ;
+; Logic element usage by number of LUT inputs ;       ;
+;     -- 4 input functions                    ; 426   ;
+;     -- 3 input functions                    ; 478   ;
+;     -- <=2 input functions                  ; 494   ;
+;                                             ;       ;
+; Logic elements by mode                      ;       ;
+;     -- normal mode                          ; 933   ;
+;     -- arithmetic mode                      ; 465   ;
+;                                             ;       ;
+; Total registers                             ; 126   ;
+;     -- Dedicated logic registers            ; 126   ;
+;     -- I/O registers                        ; 0     ;
+;                                             ;       ;
+; I/O pins                                    ; 18    ;
+; Embedded Multiplier 9-bit elements          ; 0     ;
+; Maximum fan-out                             ; 110   ;
+; Total fan-out                               ; 4401  ;
+; Average fan-out                             ; 2.82  ;
++---------------------------------------------+-------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                         ;
++------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node               ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                   ; Library Name ;
++------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------------------------------------------------------------+--------------+
+; |estacionamento                          ; 1398 (283)        ; 126 (12)     ; 0           ; 0            ; 0       ; 0         ; 18   ; 0            ; |estacionamento                                                                                                                       ;              ;
+;    |divisor_clk:divisor|                 ; 5 (5)             ; 4 (4)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |estacionamento|divisor_clk:divisor                                                                                                   ;              ;
+;    |vga_raster_DE0:estRaster|            ; 1110 (308)        ; 110 (110)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |estacionamento|vga_raster_DE0:estRaster                                                                                              ;              ;
+;       |lpm_divide:Div0|                  ; 802 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |estacionamento|vga_raster_DE0:estRaster|lpm_divide:Div0                                                                              ;              ;
+;          |lpm_divide_t0p:auto_generated| ; 802 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |estacionamento|vga_raster_DE0:estRaster|lpm_divide:Div0|lpm_divide_t0p:auto_generated                                                ;              ;
+;             |abs_divider_1dg:divider|    ; 802 (16)          ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |estacionamento|vga_raster_DE0:estRaster|lpm_divide:Div0|lpm_divide_t0p:auto_generated|abs_divider_1dg:divider                        ;              ;
+;                |alt_u_div_n8f:divider|   ; 754 (754)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |estacionamento|vga_raster_DE0:estRaster|lpm_divide:Div0|lpm_divide_t0p:auto_generated|abs_divider_1dg:divider|alt_u_div_n8f:divider  ;              ;
+;                |lpm_abs_9v9:my_abs_num|  ; 32 (32)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |estacionamento|vga_raster_DE0:estRaster|lpm_divide:Div0|lpm_divide_t0p:auto_generated|abs_divider_1dg:divider|lpm_abs_9v9:my_abs_num ;              ;
++------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------------------------------------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |estacionamento|est_atual                                                                                                                                                                   ;
++---------------------------+-------------------------+---------------------------+-----------------------+-------------------------+--------------------------+--------------------------+-------------------+
+; Name                      ; est_atual.AnimacaoSaida ; est_atual.AnimacaoEntrada ; est_atual.CarroSaindo ; est_atual.CarroEntrando ; est_atual.VerificacaoSai ; est_atual.VerificacaoEnt ; est_atual.Inicial ;
++---------------------------+-------------------------+---------------------------+-----------------------+-------------------------+--------------------------+--------------------------+-------------------+
+; est_atual.Inicial         ; 0                       ; 0                         ; 0                     ; 0                       ; 0                        ; 0                        ; 0                 ;
+; est_atual.VerificacaoEnt  ; 0                       ; 0                         ; 0                     ; 0                       ; 0                        ; 1                        ; 1                 ;
+; est_atual.VerificacaoSai  ; 0                       ; 0                         ; 0                     ; 0                       ; 1                        ; 0                        ; 1                 ;
+; est_atual.CarroEntrando   ; 0                       ; 0                         ; 0                     ; 1                       ; 0                        ; 0                        ; 1                 ;
+; est_atual.CarroSaindo     ; 0                       ; 0                         ; 1                     ; 0                       ; 0                        ; 0                        ; 1                 ;
+; est_atual.AnimacaoEntrada ; 0                       ; 1                         ; 0                     ; 0                       ; 0                        ; 0                        ; 1                 ;
+; est_atual.AnimacaoSaida   ; 1                       ; 0                         ; 0                     ; 0                       ; 0                        ; 0                        ; 1                 ;
++---------------------------+-------------------------+---------------------------+-----------------------+-------------------------+--------------------------+--------------------------+-------------------+
+
+
++----------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                ;
++-----------------------------------------------------+---------------------+------------------------+
+; Latch Name                                          ; Latch Enable Signal ; Free of Timing Hazards ;
++-----------------------------------------------------+---------------------+------------------------+
+; tempo[0]                                            ; WideOr8             ; yes                    ;
+; tempo[1]                                            ; WideOr8             ; yes                    ;
+; tempo[2]                                            ; WideOr8             ; yes                    ;
+; tempo[3]                                            ; WideOr8             ; yes                    ;
+; tempo[4]                                            ; WideOr8             ; yes                    ;
+; tempo[5]                                            ; WideOr8             ; yes                    ;
+; tempo[6]                                            ; WideOr8             ; yes                    ;
+; tempo[7]                                            ; WideOr8             ; yes                    ;
+; tempo[8]                                            ; WideOr8             ; yes                    ;
+; tempo[9]                                            ; WideOr8             ; yes                    ;
+; tempo[10]                                           ; WideOr8             ; yes                    ;
+; tempo[11]                                           ; WideOr8             ; yes                    ;
+; tempo[12]                                           ; WideOr8             ; yes                    ;
+; tempo[13]                                           ; WideOr8             ; yes                    ;
+; tempo[14]                                           ; WideOr8             ; yes                    ;
+; tempo[15]                                           ; WideOr8             ; yes                    ;
+; tempo[16]                                           ; WideOr8             ; yes                    ;
+; tempo[17]                                           ; WideOr8             ; yes                    ;
+; tempo[18]                                           ; WideOr8             ; yes                    ;
+; tempo[19]                                           ; WideOr8             ; yes                    ;
+; tempo[20]                                           ; WideOr8             ; yes                    ;
+; tempo[21]                                           ; WideOr8             ; yes                    ;
+; tempo[22]                                           ; WideOr8             ; yes                    ;
+; tempo[23]                                           ; WideOr8             ; yes                    ;
+; tempo[24]                                           ; WideOr8             ; yes                    ;
+; tempo[25]                                           ; WideOr8             ; yes                    ;
+; tempo[26]                                           ; WideOr8             ; yes                    ;
+; tempo[27]                                           ; WideOr8             ; yes                    ;
+; tempo[28]                                           ; WideOr8             ; yes                    ;
+; tempo[29]                                           ; WideOr8             ; yes                    ;
+; tempo[30]                                           ; WideOr8             ; yes                    ;
+; ncarros_comum[4]                                    ; Selector0           ; yes                    ;
+; ncarros_comum[6]                                    ; Selector0           ; yes                    ;
+; ncarros_comum[7]                                    ; Selector0           ; yes                    ;
+; ncarros_comum[8]                                    ; Selector0           ; yes                    ;
+; ncarros_comum[9]                                    ; Selector0           ; yes                    ;
+; ncarros_comum[10]                                   ; Selector0           ; yes                    ;
+; ncarros_comum[11]                                   ; Selector0           ; yes                    ;
+; ncarros_comum[12]                                   ; Selector0           ; yes                    ;
+; ncarros_comum[13]                                   ; Selector0           ; yes                    ;
+; ncarros_comum[14]                                   ; Selector0           ; yes                    ;
+; ncarros_comum[15]                                   ; Selector0           ; yes                    ;
+; ncarros_comum[16]                                   ; Selector0           ; yes                    ;
+; ncarros_comum[17]                                   ; Selector0           ; yes                    ;
+; ncarros_comum[18]                                   ; Selector0           ; yes                    ;
+; ncarros_comum[19]                                   ; Selector0           ; yes                    ;
+; ncarros_comum[20]                                   ; Selector0           ; yes                    ;
+; ncarros_comum[21]                                   ; Selector0           ; yes                    ;
+; ncarros_comum[22]                                   ; Selector0           ; yes                    ;
+; ncarros_comum[23]                                   ; Selector0           ; yes                    ;
+; ncarros_comum[24]                                   ; Selector0           ; yes                    ;
+; ncarros_comum[25]                                   ; Selector0           ; yes                    ;
+; ncarros_comum[26]                                   ; Selector0           ; yes                    ;
+; ncarros_comum[27]                                   ; Selector0           ; yes                    ;
+; ncarros_comum[28]                                   ; Selector0           ; yes                    ;
+; ncarros_comum[29]                                   ; Selector0           ; yes                    ;
+; ncarros_comum[30]                                   ; Selector0           ; yes                    ;
+; ncarros_comum[5]                                    ; Selector0           ; yes                    ;
+; ncarros_comum[3]                                    ; Selector0           ; yes                    ;
+; ncarros_comum[2]                                    ; Selector0           ; yes                    ;
+; ncarros_comum[1]                                    ; Selector0           ; yes                    ;
+; ncarros_comum[0]                                    ; Selector0           ; yes                    ;
+; ncarros_def[2]                                      ; Selector74          ; yes                    ;
+; ncarros_def[3]                                      ; Selector74          ; yes                    ;
+; ncarros_def[4]                                      ; Selector74          ; yes                    ;
+; ncarros_def[5]                                      ; Selector74          ; yes                    ;
+; ncarros_def[6]                                      ; Selector74          ; yes                    ;
+; ncarros_def[7]                                      ; Selector74          ; yes                    ;
+; ncarros_def[8]                                      ; Selector74          ; yes                    ;
+; ncarros_def[9]                                      ; Selector74          ; yes                    ;
+; ncarros_def[10]                                     ; Selector74          ; yes                    ;
+; ncarros_def[11]                                     ; Selector74          ; yes                    ;
+; ncarros_def[12]                                     ; Selector74          ; yes                    ;
+; ncarros_def[13]                                     ; Selector74          ; yes                    ;
+; ncarros_def[14]                                     ; Selector74          ; yes                    ;
+; ncarros_def[15]                                     ; Selector74          ; yes                    ;
+; ncarros_def[16]                                     ; Selector74          ; yes                    ;
+; ncarros_def[17]                                     ; Selector74          ; yes                    ;
+; ncarros_def[18]                                     ; Selector74          ; yes                    ;
+; ncarros_def[19]                                     ; Selector74          ; yes                    ;
+; ncarros_def[20]                                     ; Selector74          ; yes                    ;
+; ncarros_def[21]                                     ; Selector74          ; yes                    ;
+; ncarros_def[22]                                     ; Selector74          ; yes                    ;
+; ncarros_def[23]                                     ; Selector74          ; yes                    ;
+; ncarros_def[24]                                     ; Selector74          ; yes                    ;
+; ncarros_def[25]                                     ; Selector74          ; yes                    ;
+; ncarros_def[26]                                     ; Selector74          ; yes                    ;
+; ncarros_def[27]                                     ; Selector74          ; yes                    ;
+; ncarros_def[28]                                     ; Selector74          ; yes                    ;
+; ncarros_def[29]                                     ; Selector74          ; yes                    ;
+; ncarros_def[30]                                     ; Selector74          ; yes                    ;
+; semaforo[0]                                         ; Selector75          ; yes                    ;
+; ncarros_def[1]                                      ; Selector74          ; yes                    ;
+; ncarros_def[0]                                      ; Selector74          ; yes                    ;
+; Number of user-specified and inferred latches = 94  ;                     ;                        ;
++-----------------------------------------------------+---------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                       ;
++----------------------------------------+-------------------------------------------------+
+; Register name                          ; Reason for Removal                              ;
++----------------------------------------+-------------------------------------------------+
+; VGA_BComum_0_                          ; Stuck at GND due to stuck port data_in          ;
+; VGA_BComum_1_                          ; Stuck at GND due to stuck port data_in          ;
+; VGA_BComum_2_                          ; Stuck at GND due to stuck port data_in          ;
+; VGA_BComum_3_                          ; Stuck at GND due to stuck port data_in          ;
+; VGA_BDef_0_                            ; Stuck at GND due to stuck port data_in          ;
+; VGA_BDef_1_                            ; Stuck at GND due to stuck port data_in          ;
+; VGA_BDef_2_                            ; Stuck at GND due to stuck port data_in          ;
+; VGA_BDef_3_                            ; Stuck at GND due to stuck port data_in          ;
+; VGA_BSemaforo_0_                       ; Stuck at GND due to stuck port data_in          ;
+; VGA_BSemaforo_1_                       ; Stuck at GND due to stuck port data_in          ;
+; VGA_BSemaforo_2_                       ; Stuck at GND due to stuck port data_in          ;
+; VGA_BSemaforo_3_                       ; Stuck at GND due to stuck port data_in          ;
+; vga_raster_DE0:estRaster|comum_v       ; Merged with vga_raster_DE0:estRaster|semaforo_v ;
+; vga_raster_DE0:estRaster|def_v         ; Merged with vga_raster_DE0:estRaster|semaforo_v ;
+; VGA_GComum_1_                          ; Merged with VGA_GComum_0_                       ;
+; VGA_GComum_2_                          ; Merged with VGA_GComum_0_                       ;
+; VGA_GComum_3_                          ; Merged with VGA_GComum_0_                       ;
+; VGA_GDef_1_                            ; Merged with VGA_GDef_0_                         ;
+; VGA_GDef_2_                            ; Merged with VGA_GDef_0_                         ;
+; VGA_GDef_3_                            ; Merged with VGA_GDef_0_                         ;
+; VGA_GSemaforo_1_                       ; Merged with VGA_GSemaforo_0_                    ;
+; VGA_GSemaforo_2_                       ; Merged with VGA_GSemaforo_0_                    ;
+; VGA_GSemaforo_3_                       ; Merged with VGA_GSemaforo_0_                    ;
+; VGA_RSemaforo_1_                       ; Merged with VGA_RSemaforo_0_                    ;
+; VGA_RSemaforo_2_                       ; Merged with VGA_RSemaforo_0_                    ;
+; VGA_RSemaforo_3_                       ; Merged with VGA_RSemaforo_0_                    ;
+; VGA_RComum_1_                          ; Merged with VGA_RComum_0_                       ;
+; VGA_RComum_2_                          ; Merged with VGA_RComum_0_                       ;
+; VGA_RComum_3_                          ; Merged with VGA_RComum_0_                       ;
+; VGA_RDef_1_                            ; Merged with VGA_RDef_0_                         ;
+; VGA_RDef_2_                            ; Merged with VGA_RDef_0_                         ;
+; VGA_RDef_3_                            ; Merged with VGA_RDef_0_                         ;
+; VGA_GSemaforo_0_                       ; Stuck at VCC due to stuck port data_in          ;
+; Total Number of Removed Registers = 33 ;                                                 ;
++----------------------------------------+-------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 126   ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 39    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                  ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                        ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------+
+; 3:1                ; 21 bits   ; 42 LEs        ; 21 LEs               ; 21 LEs                 ; Yes        ; |estacionamento|vga_raster_DE0:estRaster|\RectangleHGen:passo[26] ;
+; 7:1                ; 12 bits   ; 48 LEs        ; 36 LEs               ; 12 LEs                 ; Yes        ; |estacionamento|vga_raster_DE0:estRaster|VGA_G[1]                 ;
+; 3:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; No         ; |estacionamento|vga_raster_DE0:estRaster|passo                    ;
+; 4:1                ; 31 bits   ; 62 LEs        ; 31 LEs               ; 31 LEs                 ; No         ; |estacionamento|Selector93                                        ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |estacionamento ;
++-------------------+----------+-------------------------------------------------+
+; Parameter Name    ; Value    ; Type                                            ;
++-------------------+----------+-------------------------------------------------+
+; n                 ; 15       ; Signed Integer                                  ;
+; tempSaida         ; 3        ; Signed Integer                                  ;
+; tempEntrada       ; 3        ; Signed Integer                                  ;
+; clkCiclos         ; 50000000 ; Signed Integer                                  ;
+; ncarros_comum_max ; 10       ; Signed Integer                                  ;
+; ncarros_def_max   ; 3        ; Signed Integer                                  ;
++-------------------+----------+-------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: vga_raster_DE0:estRaster|lpm_divide:Div0 ;
++------------------------+----------------+-------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                            ;
++------------------------+----------------+-------------------------------------------------+
+; LPM_WIDTHN             ; 32             ; Untyped                                         ;
+; LPM_WIDTHD             ; 20             ; Untyped                                         ;
+; LPM_NREPRESENTATION    ; SIGNED         ; Untyped                                         ;
+; LPM_DREPRESENTATION    ; SIGNED         ; Untyped                                         ;
+; LPM_PIPELINE           ; 0              ; Untyped                                         ;
+; LPM_REMAINDERPOSITIVE  ; FALSE          ; Untyped                                         ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                         ;
+; CBXI_PARAMETER         ; lpm_divide_t0p ; Untyped                                         ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                         ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                         ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                      ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                    ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                    ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                  ;
++------------------------+----------------+-------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:03     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit Analysis & Synthesis
+    Info: Version 12.1 Build 177 11/07/2012 SJ Web Edition
+    Info: Processing started: Sun Nov 25 00:02:45 2018
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off estacionamento -c estacionamento
+Info (20030): Parallel compilation is enabled and will use 8 of the 8 processors detected
+Info (12021): Found 2 design units, including 1 entities, in source file divisor_clk.vhd
+    Info (12022): Found design unit 1: divisor_clk-algorithmic
+    Info (12023): Found entity 1: divisor_clk
+Info (12021): Found 2 design units, including 1 entities, in source file vga_raster_de0.vhd
+    Info (12022): Found design unit 1: vga_raster_DE0-rtl
+    Info (12023): Found entity 1: vga_raster_DE0
+Info (12021): Found 1 design units, including 0 entities, in source file pkg_semaforo_vga.vhd
+    Info (12022): Found design unit 1: pkg_semaforo_VGA
+Info (12021): Found 2 design units, including 1 entities, in source file estacionamento.vhd
+    Info (12022): Found design unit 1: estacionamento-garage
+    Info (12023): Found entity 1: estacionamento
+Info (12127): Elaborating entity "estacionamento" for the top level hierarchy
+Warning (10492): VHDL Process Statement warning at estacionamento.vhd(114): signal "semaforo" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at estacionamento.vhd(127): signal "tempo" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at estacionamento.vhd(129): signal "tempo" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at estacionamento.vhd(133): signal "especial" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at estacionamento.vhd(134): signal "ncarros_def" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at estacionamento.vhd(136): signal "ncarros_comum" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at estacionamento.vhd(150): signal "especial" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at estacionamento.vhd(151): signal "ncarros_def" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at estacionamento.vhd(152): signal "ncarros_comum" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at estacionamento.vhd(156): signal "ncarros_comum" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at estacionamento.vhd(161): signal "ncarros_def" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at estacionamento.vhd(175): signal "tempo" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at estacionamento.vhd(177): signal "tempo" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at estacionamento.vhd(191): signal "tempo" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at estacionamento.vhd(193): signal "tempo" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at estacionamento.vhd(207): signal "tempo" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at estacionamento.vhd(209): signal "tempo" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10631): VHDL Process Statement warning at estacionamento.vhd(89): inferring latch(es) for signal or variable "tempo", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at estacionamento.vhd(89): inferring latch(es) for signal or variable "semaforo", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at estacionamento.vhd(89): inferring latch(es) for signal or variable "ncarros_def", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at estacionamento.vhd(89): inferring latch(es) for signal or variable "ncarros_comum", which holds its previous value in one or more paths through the process
+Info (10041): Inferred latch for "ncarros_comum[0]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_comum[1]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_comum[2]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_comum[3]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_comum[4]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_comum[5]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_comum[6]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_comum[7]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_comum[8]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_comum[9]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_comum[10]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_comum[11]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_comum[12]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_comum[13]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_comum[14]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_comum[15]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_comum[16]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_comum[17]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_comum[18]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_comum[19]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_comum[20]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_comum[21]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_comum[22]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_comum[23]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_comum[24]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_comum[25]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_comum[26]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_comum[27]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_comum[28]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_comum[29]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_comum[30]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_def[0]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_def[1]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_def[2]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_def[3]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_def[4]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_def[5]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_def[6]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_def[7]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_def[8]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_def[9]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_def[10]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_def[11]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_def[12]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_def[13]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_def[14]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_def[15]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_def[16]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_def[17]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_def[18]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_def[19]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_def[20]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_def[21]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_def[22]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_def[23]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_def[24]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_def[25]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_def[26]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_def[27]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_def[28]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_def[29]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "ncarros_def[30]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "semaforo[0]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "semaforo[1]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "semaforo[2]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "semaforo[3]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "semaforo[4]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "semaforo[5]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "semaforo[6]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "semaforo[7]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "semaforo[8]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "semaforo[9]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "semaforo[10]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "semaforo[11]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "semaforo[12]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "semaforo[13]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "semaforo[14]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "semaforo[15]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "semaforo[16]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "semaforo[17]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "semaforo[18]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "semaforo[19]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "semaforo[20]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "semaforo[21]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "semaforo[22]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "semaforo[23]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "semaforo[24]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "semaforo[25]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "semaforo[26]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "semaforo[27]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "semaforo[28]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "semaforo[29]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "semaforo[30]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "semaforo[31]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "tempo[0]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "tempo[1]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "tempo[2]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "tempo[3]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "tempo[4]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "tempo[5]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "tempo[6]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "tempo[7]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "tempo[8]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "tempo[9]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "tempo[10]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "tempo[11]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "tempo[12]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "tempo[13]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "tempo[14]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "tempo[15]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "tempo[16]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "tempo[17]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "tempo[18]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "tempo[19]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "tempo[20]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "tempo[21]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "tempo[22]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "tempo[23]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "tempo[24]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "tempo[25]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "tempo[26]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "tempo[27]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "tempo[28]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "tempo[29]" at estacionamento.vhd(89)
+Info (10041): Inferred latch for "tempo[30]" at estacionamento.vhd(89)
+Info (12128): Elaborating entity "divisor_clk" for hierarchy "divisor_clk:divisor"
+Info (12128): Elaborating entity "vga_raster_DE0" for hierarchy "vga_raster_DE0:estRaster"
+Info (278001): Inferred 1 megafunctions from design logic
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "vga_raster_DE0:estRaster|Div0"
+Info (12130): Elaborated megafunction instantiation "vga_raster_DE0:estRaster|lpm_divide:Div0"
+Info (12133): Instantiated megafunction "vga_raster_DE0:estRaster|lpm_divide:Div0" with the following parameter:
+    Info (12134): Parameter "LPM_WIDTHN" = "32"
+    Info (12134): Parameter "LPM_WIDTHD" = "20"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "LPM_HINT" = "LPM_REMAINDERPOSITIVE=FALSE"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_t0p.tdf
+    Info (12023): Found entity 1: lpm_divide_t0p
+Info (12021): Found 1 design units, including 1 entities, in source file db/abs_divider_1dg.tdf
+    Info (12023): Found entity 1: abs_divider_1dg
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_n8f.tdf
+    Info (12023): Found entity 1: alt_u_div_n8f
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_unc.tdf
+    Info (12023): Found entity 1: add_sub_unc
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_vnc.tdf
+    Info (12023): Found entity 1: add_sub_vnc
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_abs_6v9.tdf
+    Info (12023): Found entity 1: lpm_abs_6v9
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_abs_9v9.tdf
+    Info (12023): Found entity 1: lpm_abs_9v9
+Warning (13012): Latch semaforo[0] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal est_atual.VerificacaoEnt
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "global.bp.work.pkg_semaforo_VGA.VGA_BSemaforo_3__gl_output" is stuck at GND
+    Warning (13410): Pin "global.bp.work.pkg_semaforo_VGA.VGA_BSemaforo_2__gl_output" is stuck at GND
+    Warning (13410): Pin "global.bp.work.pkg_semaforo_VGA.VGA_BSemaforo_1__gl_output" is stuck at GND
+    Warning (13410): Pin "global.bp.work.pkg_semaforo_VGA.VGA_BSemaforo_0__gl_output" is stuck at GND
+    Warning (13410): Pin "global.bp.work.pkg_semaforo_VGA.VGA_GSemaforo_3__gl_output" is stuck at VCC
+    Warning (13410): Pin "global.bp.work.pkg_semaforo_VGA.VGA_GSemaforo_2__gl_output" is stuck at VCC
+    Warning (13410): Pin "global.bp.work.pkg_semaforo_VGA.VGA_GSemaforo_1__gl_output" is stuck at VCC
+    Warning (13410): Pin "global.bp.work.pkg_semaforo_VGA.VGA_GSemaforo_0__gl_output" is stuck at VCC
+    Warning (13410): Pin "global.bp.work.pkg_semaforo_VGA.VGA_BDef_3__gl_output" is stuck at GND
+    Warning (13410): Pin "global.bp.work.pkg_semaforo_VGA.VGA_BDef_2__gl_output" is stuck at GND
+    Warning (13410): Pin "global.bp.work.pkg_semaforo_VGA.VGA_BDef_1__gl_output" is stuck at GND
+    Warning (13410): Pin "global.bp.work.pkg_semaforo_VGA.VGA_BDef_0__gl_output" is stuck at GND
+    Warning (13410): Pin "global.bp.work.pkg_semaforo_VGA.VGA_BComum_3__gl_output" is stuck at GND
+    Warning (13410): Pin "global.bp.work.pkg_semaforo_VGA.VGA_BComum_2__gl_output" is stuck at GND
+    Warning (13410): Pin "global.bp.work.pkg_semaforo_VGA.VGA_BComum_1__gl_output" is stuck at GND
+    Warning (13410): Pin "global.bp.work.pkg_semaforo_VGA.VGA_BComum_0__gl_output" is stuck at GND
+Info (286030): Timing-Driven Synthesis is running
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 1453 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 4 input pins
+    Info (21059): Implemented 14 output pins
+    Info (21061): Implemented 1435 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 40 warnings
+    Info: Peak virtual memory: 527 megabytes
+    Info: Processing ended: Sun Nov 25 00:02:51 2018
+    Info: Elapsed time: 00:00:06
+    Info: Total CPU time (on all processors): 00:00:05
+
+

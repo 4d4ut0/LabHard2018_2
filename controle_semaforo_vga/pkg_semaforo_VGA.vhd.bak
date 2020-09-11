@@ -1,0 +1,64 @@
+package pkg.semaforo_VGA is 
+
+	type ESTADO is (RG, RY, GR, YR, YY);
+	signal prox_est, est_atual: ESTADO;
+	constant tempRG: natural := 2;
+	constant tempRY: natural := 1;
+	constant tempGR: natural := 3;
+	constant tempYR: natural := 1;
+
+  -- Parametros do Video
+  -- tamanho total da linha (em pixels): area do display+front porch+hsync+back porch
+  constant HTOTAL       : integer :=  800;
+  constant HSYNC        : integer :=  96;
+  constant HBACK_PORCH  : integer :=  48;
+  constant HACTIVE      : integer :=  640;
+  constant HFRONT_PORCH : integer :=  16;
+  --tamanho total da coluna (em linhas): area do display+front porch+vsync+back porch 
+  constant VTOTAL       : integer :=  525;
+  constant VSYNC        : integer :=  2;
+  constant VBACK_PORCH  : integer :=  33;
+  constant VACTIVE      : integer :=  480;
+  constant VFRONT_PORCH : integer :=  10;
+  
+  --RETANGULO 1
+  constant RETANGULO_HSTART : integer  := 100;
+  constant RETANGULO_HEND   : integer  := 125;
+  constant RETANGULO_VSTART : integer  := 150;
+  constant RETANGULO_VEND   : integer  := 200;
+  --RETANGULO2
+  constant RETANGULO_HSTART2 : integer  := 125;
+  constant RETANGULO_HEND2   : integer  := 175;
+  constant RETANGULO_VSTART2 : integer  := 100;
+  constant RETANGULO_VEND2   : integer  := 200;
+  --RETANGULO3
+  constant RETANGULO_HSTART3 : integer  := 175;
+  constant RETANGULO_HEND3   : integer  := 195;
+  constant RETANGULO_VSTART3 : integer  := 170;
+  constant RETANGULO_VEND3   : integer  := 200;
+
+  procedure Div_clk (signal clk25: out bit);
+  procedure clk25_vga(clk25: in bit);
+  
+end;
+
+package body pkg.semaforo_VGA is
+begin
+	procedure Div_clk(signal Dclk25: out bit) is
+	variable contador: natural range 0 to 2:=0;
+	begin
+		contador:=contador+1;
+		if (contador=1) then
+		  contador:=0;
+		  Dclk25:=not Dclk25;
+		end if;
+	end procedure
+	
+	procedure clk25_vga(clk: in bit, clk25: out bit)
+	begin
+		if clk = '1' then 
+			clk25 <= Div_clk(clk25);
+		end if;
+	end procedure;
+	
+end;

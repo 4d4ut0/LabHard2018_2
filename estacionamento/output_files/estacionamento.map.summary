@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Sun Nov 25 00:02:51 2018
+Quartus II 64-Bit Version : 12.1 Build 177 11/07/2012 SJ Web Edition
+Revision Name : estacionamento
+Top-level Entity Name : estacionamento
+Family : Cyclone III
+Total logic elements : 1,420
+    Total combinational functions : 1,398
+    Dedicated logic registers : 126
+Total registers : 126
+Total pins : 18
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0
